@@ -122,7 +122,8 @@ public class AlumnosBean implements Serializable{
             obj.setTeleAlum(objeAlum.getTeleAlum());
             tx.commit();
             ctx.execute("setMessage('MESS_SUCC', 'Datos modificados')");
-            
+            consTodo();
+            this.objeAlum = new Alumnos(); // Limpiar
         }
         catch(Exception ex)
         {
@@ -148,6 +149,8 @@ public class AlumnosBean implements Serializable{
                 em.remove(respo);
                 tx.commit();
                 ctx.execute("setMessage('MESS_SUCC', 'Datos eliminados')");
+                consTodo();
+                this.objeAlum = new Alumnos(); // Limpiar
             }
         }catch(Exception e){
             ctx.execute("setMessage('MESS_ERRO', 'Error al eliminar ')");

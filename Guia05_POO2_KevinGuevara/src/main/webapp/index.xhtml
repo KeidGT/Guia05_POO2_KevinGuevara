@@ -84,15 +84,15 @@ and open the template in the editor.
                         <div class="input-field col s6">
                             <h:commandLink id="btnGuardar" class="btn waves-effect waves-light" style="width: 100%; padding: 0px;">
                                 <p:ajax listener="#{alumnosBean.guar()}" process="@form" update="@form :ContAlum" oncomplete="ocultar(); seleccionarElemento();"
-                                                immediate="true"/>
+                                                immediate="false"/>
                                 <i class="fa fa-save"/> Guardar 
                             </h:commandLink>
                         </div>
                         <div class="input-field col s6">
                            <h:commandLink id="btnModificar" class="btn waves-effect waves-light" style="width: 100%; padding: 0px;">
                                <p:ajax listener="#{alumnosBean.modificar()}" process="@form" update="@form :ContAlum" oncomplete="ocultar(); seleccionarElemento();"
-                                                immediate="true"/>
-                                <i class="fa fa-save"/> Modificar 
+                                                immediate="false"/>
+                                <i class="fa fa-list-alt"/> Modificar 
                             </h:commandLink>
                         </div>
                     </div>
@@ -100,28 +100,20 @@ and open the template in the editor.
                         <div class="input-field col s6">
                             <h:commandLink id="btnEliminar" class="btn waves-effect waves-light" style="width: 100%; padding: 0px;">
                                <p:ajax listener="#{alumnosBean.eliminar()}" process="@form" update="@form :ContAlum" oncomplete="ocultar(); seleccionarElemento();"
-                                                immediate="true"/>
-                                <i class="fa fa-save"/> Eliminar 
+                                                immediate="false"/>
+                                <i class="fa fa-trash-o"/> Eliminar 
                             </h:commandLink>
                         </div>
                         <div class="input-field col s6">
                             
-                            <input onclick="resetForm();" class="btn waves-effect waves-light" style="width: 100%; padding: 0px; text-decoration: none;" type="button" name="btnLimpiar" value="Limpiar"/>
+                            <!--input onclick="resetForm();" class="btn waves-effect waves-light" style="width: 100%; padding: 0px; text-decoration: none;" type="button" name="btnLimpiar" value="Limpiar"/-->
                         </div>
                     </div>
                 </h:form>
             </div>
                 <div id="registros">
                     
-                    <div class="row">
-                        <div class="input-field col s8">
-                            <input  type="text" class="validate" id="txtBuscar" onkeyup="buscarRegistro('txtBuscar','tbData')"/>
-                        <label for="disabled">Buscar Registro</label>
-                        </div>
-                        <div class="input-field col s4">
-                            <h2 class="left menMan" id="mensAler">Estado: ${mensAler}</h2>
-                        </div>
-                    </div>
+                    
                        
                         <table class="centered" style="color: #fff; background: #26A69A;">
                             <thead>
@@ -204,8 +196,13 @@ and open the template in the editor.
     <h:outputScript library="js" name="custom/mens.js"/>
     <script>
         function resetForm(){
-            alert("Hola");
-            $('#FormAlum')[0].reset();
+             /*$("#FormAlum:nomb").val(null);
+            $("#FormAlum:apel").val(null);
+            $("#FormAlum:dire").val(null);
+            $("#FormAlum:tele").val(null);
+            $("#FormAlum:fechNac").val(null);
+            $("#FormAlum:mail").val(null);*/
+            $('select').material_select();
         }
         $(document).ready(function() {
             $('select').material_select();
