@@ -1,7 +1,7 @@
-function setMessage(tipo, title, msg) 
+function setMessage(tipo, msg) 
 {
     toastr.options = {
-        "closeButton": true,
+        "closeButton": false,
         "debug": false,
         "newestOnTop": true,
         "progressBar": false,
@@ -10,7 +10,7 @@ function setMessage(tipo, title, msg)
         "onclick": null,
         "showDuration": "300",
         "hideDuration": "1000",
-        "timeOut": "3000",
+        "timeOut": "5000",
         "extendedTimeOut": "1000",
         "showEasing": "swing",
         "hideEasing": "linear",
@@ -19,18 +19,18 @@ function setMessage(tipo, title, msg)
     }
     if (tipo === 'MESS_WARN')
     {
-        toastr.warning(msg, title);
+        toastr.warning(msg);
     }
     else if (tipo === 'MESS_ERRO')
     {
-        toastr.error(msg, title);
+        toastr.error(msg);
     }
     else if (tipo === 'MESS_SUCC')
     {
-        toastr.success(msg, title);
+        toastr.success(msg);
     }
     else if (tipo === 'MESS_INFO')
     {
-        toastr.info(msg, title);
+        toastr.info(msg);
     }
 }

@@ -10,79 +10,216 @@ and open the template in the editor.
       xmlns:f="http://xmlns.jcp.org/jsf/core" 
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough" 
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:t="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
         <title>Página de Inicio</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <h:outputStylesheet library="css" name="bootstrap.min.css"/>
-        <h:outputScript library="js" name="bootstrap.min.js"/>
-        <h:outputScript library="js/LfIE9" name="jquery.min.js"/>
-        <h:outputStylesheet library="css" name="font-awesome.min.css"/>
-        <link rel="shortcut icon" type="image/x-icon" href="#{resource['images/favicon.ico']}"/>
-        
+        <h:outputStylesheet library="css" name="estilo.css"/>
+        <h:outputStylesheet library="css" name="materialize.min.css"/>
+        <h:outputStylesheet library="css" name="icon.css"/>
         <h:outputStylesheet library="css" name="toastr.min.css"/>
-        <h:outputScript library="js" name="toastr.min.js"/>
-        <h:outputScript library="js" name="custom/mens.js"/>
-       
+        <h:outputStylesheet library="css" name="font-awesome.min.css"/>
+        <link rel="shortcut icon" type="image/x-icon" href="#{resource['images/GT.png']}"/>
+        
     </h:head>
     <h:body>
-        <div class="row">
-            <div class="col-md-4 col-xs-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Formulario</div>
-                    <div class="panel-body">
-                        <h:form id="FormAlum">
-                            <h:inputHidden id="codi" value="#{alumnosBean.objeAlum.codiAlum}" />
-                            <div class="form-group">
-                                <h:outputLabel  for="nomb" value="Nombre: "/>
-                                <h:inputText id="nomb" value="#{alumnosBean.objeAlum.nombAlum}" class="form-control" />
-                            </div>
-                            <div class="form-group">
-                                <h:outputLabel  for="apel" value="Apellido: "/>
-                                <h:inputText id="apel" value="#{alumnosBean.objeAlum.apelAlum}" class="form-control" />
-                            </div>
-                            <div class="form-group">
-                                <h:outputLabel  for="fechNaci" value="Fecha Nacimiento: "/>
-                                <h:inputText id="fechNaci" value="#{alumnosBean.objeAlum.fechNaciAlum}" class="form-control">
-                                    <f:convertDateTime pattern="dd/MM/yyyy" />
-                                </h:inputText>
-                            </div>
-                            <div class="form-group">
-                                <h:outputLabel  for="mail" value="E-mail: "/>
-                                <h:inputText id="mail" value="#{alumnosBean.objeAlum.mailAlum}" class="form-control" />
-                            </div>
-                            <div class="form-group">
-                                <h:outputLabel  for="tele" value="Teléfono: "/>
-                                <h:inputText id="tele" value="#{alumnosBean.objeAlum.teleAlum}" class="form-control" />
-                            </div>
-                            <div class="form-group">
-                                <h:outputLabel  for="dire" value="Dirección: "/>
-                                <h:inputText id="dire" value="#{alumnosBean.objeAlum.direAlum}" class="form-control" />
-                            </div>
-                            <div class="form-group">
-                                <h:outputLabel  for="gene" value="Género: "/>
-                                <h:selectOneMenu id="gene" value="#{alumnosBean.objeAlum.geneAlum}" class="form-control">
-                                    <f:selectItem itemValue="M" itemLabel="Masculino"/>
-                                    <f:selectItem itemValue="F" itemLabel="Femenino"/>
-                                </h:selectOneMenu>
-                            </div>
-                            <div class="form-group">
-                                <h:commandLink id="btonGuar" actionListener="#{alumnosBean.guar()}"  class="btn btn-primary">
-                                <i class="fa fa-check"/>Guardar
-                                </h:commandLink>
-                            </div>
-                            <h:commandLink onclick="setMessage('MENS_ERRO', 'Alerta', 'Este es un Mensaje'); return false;" value="Mensaje" class="btn btn-primary" />
+        <ui:include src="/resources/inc/nav.xhtml" />
+        
+        
+        <div id="contenedor" >
+            <div>
+                <div id="mensajes">
+                <h1 class="center tituloMan">Alumnos</h1>
+                </div>
+            </div>
+            
+            <div id="formulario">
+                <h:form id="FormAlum">
+
+                    <h:inputHidden id="codi" value="#{alumnosBean.objeAlum.codiAlum}" />
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <h:inputText t:placeholder="Nombre" id="nomb" value="#{alumnosBean.objeAlum.nombAlum}" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <h:inputText id="apel" t:placeholder="Apellido" value="#{alumnosBean.objeAlum.apelAlum}" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <h:inputText id="fechNaci" t:placeholder="Fecha Nacimiento" value="#{alumnosBean.objeAlum.fechNaciAlum}" class="form-control">
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                            </h:inputText>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <h:inputText id="mail" t:placeholder="E-mail"  value="#{alumnosBean.objeAlum.mailAlum}" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <h:inputText id="tele" t:placeholder="Teléfono" value="#{alumnosBean.objeAlum.teleAlum}" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <h:inputText id="dire" t:placeholder="Dirección" value="#{alumnosBean.objeAlum.direAlum}" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            
+                            <h:selectOneMenu id="gene" value="#{alumnosBean.objeAlum.geneAlum}">
+                                <f:selectItem itemValue="M" itemLabel="Masculino"/>
+                                <f:selectItem itemValue="F" itemLabel="Femenino"/>
+                            </h:selectOneMenu>
+                            <h:outputLabel  for="gene" value="Género "/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <h:commandLink id="btnGuardar" class="btn waves-effect waves-light" style="width: 100%; padding: 0px;">
+                                <p:ajax listener="#{alumnosBean.guar()}" process="@form" update="@form :ContAlum" oncomplete="ocultar(); seleccionarElemento();"
+                                                immediate="true"/>
+                                <i class="fa fa-save"/> Guardar 
+                            </h:commandLink>
+                        </div>
+                        <div class="input-field col s6">
+                           <h:commandLink id="btnModificar" class="btn waves-effect waves-light" style="width: 100%; padding: 0px;">
+                               <p:ajax listener="#{alumnosBean.modificar()}" process="@form" update="@form :ContAlum" oncomplete="ocultar(); seleccionarElemento();"
+                                                immediate="true"/>
+                                <i class="fa fa-save"/> Modificar 
+                            </h:commandLink>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <h:commandLink id="btnEliminar" class="btn waves-effect waves-light" style="width: 100%; padding: 0px;">
+                               <p:ajax listener="#{alumnosBean.eliminar()}" process="@form" update="@form :ContAlum" oncomplete="ocultar(); seleccionarElemento();"
+                                                immediate="true"/>
+                                <i class="fa fa-save"/> Eliminar 
+                            </h:commandLink>
+                        </div>
+                        <div class="input-field col s6">
+                            
+                            <input onclick="resetForm();" class="btn waves-effect waves-light" style="width: 100%; padding: 0px; text-decoration: none;" type="button" name="btnLimpiar" value="Limpiar"/>
+                        </div>
+                    </div>
+                </h:form>
+            </div>
+                <div id="registros">
+                    
+                    <div class="row">
+                        <div class="input-field col s8">
+                            <input  type="text" class="validate" id="txtBuscar" onkeyup="buscarRegistro('txtBuscar','tbData')"/>
+                        <label for="disabled">Buscar Registro</label>
+                        </div>
+                        <div class="input-field col s4">
+                            <h2 class="left menMan" id="mensAler">Estado: ${mensAler}</h2>
+                        </div>
+                    </div>
+                       
+                        <table class="centered" style="color: #fff; background: #26A69A;">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Fecha Nac.</th>
+                                    <th>Email</th>
+                                    <th>Teléfono</th>
+                                    <th>Dirección</th>
+                                    <th style="display: none;"><span class="icon-appleinc"></span></th>
+                                </tr>
+                            </thead>
+                        </table>
+                         
+                    <div id="tabla">
+                        <h:panelGroup id="ContAlum">
+                            <h:dataTable pt:data-id="tbData" id="tbData" value="#{alumnosBean.listAlum}"
+                                                 var="fila" class="boottable" pt:data-toolbar="#toolbar"
+                                                 styleClass="bordered highlight centered"
+                                                 pt:data-show-refresh="false" pt:data-show-toggle="false" pt:data-show-columns="false" 
+                                                 pt:data-search="true" pt:data-pagination="true" pt:data-page-list="[5, 10, 20, 50]"
+                                                 pt:data-click-to-select="true"  pt:data-select-item-name="radio"
+                                                 pt:data-single-select="true">                                
+                                        
+                                        
+                                        <h:column pt:data-sortable="true" pt:data-field="nomb">
+                                            <f:facet name="header">Nombre</f:facet>
+                                            <h:outputText value="#{fila.nombAlum.concat(' ').concat(fila.apelAlum)}"/>   
+                                        </h:column>
+                                        <h:column pt:data-sortable="true">
+                                            <f:facet name="header">Fecha Nac.</f:facet>
+                                            <h:outputText value="#{fila.fechNaciAlum}">
+                                                <f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT-6"/>
+                                            </h:outputText>                            
+                                        </h:column>
+                                        <h:column pt:data-sortable="true">
+                                            <f:facet name="header">Email</f:facet>
+                                            <h:outputText value="#{fila.mailAlum}"/>
+                                        </h:column>
+                                        <h:column pt:data-sortable="true">
+                                            <f:facet name="header">Teléfono</f:facet> 
+                                            <h:outputText value="#{fila.teleAlum}"/>
+                                        </h:column>
+                                        <h:column pt:data-sortable="true">
+                                            <f:facet name="header">Dirección</f:facet> 
+                                            <h:outputText value="#{fila.direAlum}"/>
+                                        </h:column>
+                                <h:column pt:data-align="right" id="codigo" pt:data-id="codigo" pt:data-sortable="true" pt:data-field="id">
+                                            <f:facet name="header">Código</f:facet>
+                                            <h:outputText value="#{fila.codiAlum}"/>
+                                        </h:column>
+                                    </h:dataTable>
+                        </h:panelGroup>
+                    </div>
+                    <div style="display: none;">
+                        <h:form id="FormCons">
+                        <h:inputText id="codigo" value="#{alumnosBean.codigo}" class="form-control" />
+                        <h:commandLink id="btnGuardar" class="btn waves-effect waves-light" style="width: 100%; padding: 0px;">
+                                <p:ajax listener="#{alumnosBean.cons()}" process="@form" update="@form :FormAlum" 
+                                                immediate="true"/>
+                                 Consultar 
+                            </h:commandLink>
                         </h:form>
                     </div>
+
                 </div>
-            </div>
-            <div class="col-md-8 col-xs-8">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Tabla de Datos</div>
-                    <div class="panel-body">
-                    </div>
-                </div>
-            </div>
+
         </div>
+        
+        
+        
+        
+        
+        
     </h:body>
+    <h:outputScript library="js" name="jquery-2.1.3.js"/>
+    <h:outputScript library="js" name="materialize.min.js"/>
+    <h:outputScript library="js" name="dinamico.js"/>
+    <h:outputScript library="js" name="toastr.min.js"/>
+    <h:outputScript library="js" name="custom/mens.js"/>
+    <script>
+        function resetForm(){
+            alert("Hola");
+            $('#FormAlum')[0].reset();
+        }
+        $(document).ready(function() {
+            $('select').material_select();
+            
+            $('.button-collapse').sideNav({
+	      menuWidth: 300, // Default is 240
+	      edge: 'right', // Choose the horizontal origin
+	      closeOnClick: true // Closes side-nav on <a></a> clicks, useful for Angular/Meteor
+	    }
+	  );
+          
+         ocultar(); 
+         seleccionarElemento();
+        });
+        
+    </script>
 </html>
